@@ -4,7 +4,7 @@ public class Kursus {
     private String deskripsi;
     private double harga;
 
-    public  Kursus(int id, String judul, String deskripsi){
+    public  Kursus(int id, String judul, String deskripsi, double harga) {
         this.id = id;
         this.judul = judul;
         this.deskripsi = deskripsi;
