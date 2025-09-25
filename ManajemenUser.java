@@ -25,7 +25,14 @@ public class ManajemenUser {
         System.out.println("Login gagal! Email atau password salah.");
         return null;
     }
-    
+    public static String getRole(User user) {
+    if (user instanceof Peserta) {
+        return "Peserta";
+    } else if (user instanceof Instruktur) {
+        return "Instruktur";
+    }
+    return null; 
+    }
     public static void tambahInstruktur(String nama, String email, String password, String bidang) {
         Instruktur instruktur = new Instruktur(nama, email, password, bidang);
         daftarUser.add(instruktur);
