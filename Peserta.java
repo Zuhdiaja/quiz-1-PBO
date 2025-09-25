@@ -41,6 +41,7 @@ public class Peserta extends User {
     public void lihatKursusDiikuti() {
         if (kursusDiikuti.isEmpty()) {
             System.out.println("Belum ada kursus yang diikuti.");
+            
         } else {
             System.out.println("=== Kursus yang diikuti ===");
             for (int i = 0; i < kursusDiikuti.size(); i++) {
@@ -61,4 +62,8 @@ public class Peserta extends User {
     System.out.println("=== Konten yang diakses: " + konten.getJudul() + " ===");
     konten.tampilkanKonten();
 }
+public ArrayList<Kursus> getKursusDiikuti() {
+    return kursusDiikuti;
+}
+
 }
