@@ -8,12 +8,35 @@ public class Peserta extends User {
         super(nama, email, password);
     }
 
-    public void daftarKursus(Kursus k) {
-        if (!kursusDiikuti.contains(k)) {
+    // public void daftarKursus(Kursus k) {
+    // //     if (!kursusDiikuti.contains(k)) {
+    // //         kursusDiikuti.add(k);
+    // //         System.out.println(getNama() + " berhasil daftar kursus: " + k.getJudul());
+    // //     } else {
+    // //         System.out.println("Sudah terdaftar di kursus ini.");
+    // //     }
+    // // }
+
+    public boolean daftarKursus(Kursus k, double jumlah) {
+        // Cek dulu apakah peserta sudah pernah mendaftar kursus ini
+        if (kursusDiikuti.contains(k)) {
+            System.out.println("Anda sudah terdaftar di kursus '" + k.getJudul() + "'.");
+            return false;
+        }
+
+        // Lakukan proses pembayaran
+        Pembayaran p = new Pembayaran(this, k, jumlah);
+        p.infoPembayaran(); // Tampilkan info pembayaran agar transparan
+
+        // Jika pembayaran berhasil, baru daftarkan peserta
+        if (p.isStatus()) {
             kursusDiikuti.add(k);
-            System.out.println(getNama() + " berhasil daftar kursus: " + k.getJudul());
+            kursusSudahDibayar.add(k);
+            System.out.println("Pendaftaran dan pembayaran berhasil! Anda sekarang terdaftar di kursus: " + k.getJudul());
+            return true;
         } else {
-            System.out.println("Sudah terdaftar di kursus ini.");
+            System.out.println("Pendaftaran gagal karena pembayaran tidak mencukupi.");
+            return false;
         }
     }
 
