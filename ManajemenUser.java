@@ -12,13 +12,13 @@ public class ManajemenUser {
         }
         Peserta pesertaBaru = new Peserta(nama, email, password); 
         daftarUser.add(pesertaBaru);
-        System.out.println("Registrasi berhasil: " + nama);
+        System.out.println("\nRegistrasi berhasil: " + nama);
     }
 
     public static User login(String email, String password) {
         for (User u : daftarUser) {
             if (u.getEmail().equals(email) && u.getPassword().equals(password)) {
-                System.out.println("Login berhasil! Selamat datang " + u.getNama());
+                // System.out.println("Login berhasil! Selamat datang " + u.getNama());
                 return u;
             }
         }
@@ -33,8 +33,19 @@ public class ManajemenUser {
     }
     return null; 
     }
-    public static void tambahInstruktur(String nama, String email, String password, String bidang) {
+    public static Instruktur tambahInstruktur(String nama, String email, String password, String bidang) {
         Instruktur instruktur = new Instruktur(nama, email, password, bidang);
         daftarUser.add(instruktur);
+        return instruktur;
     }
+
+    public static java.util.ArrayList<Instruktur> getDaftarInstruktur() {
+    java.util.ArrayList<Instruktur> instrukturList = new java.util.ArrayList<>();
+    for (User u : daftarUser) {
+        if (u instanceof Instruktur) {
+            instrukturList.add((Instruktur) u);
+        }
+    }
+    return instrukturList;
+}
 }
