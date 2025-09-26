@@ -9,10 +9,10 @@ public class Instruktur extends User {
     public String getBidangKeahlian() { return bidangKeahlian; }
 
     
-     public void buatKursus(String namaKursus, double harga) {
-        System.out.println("Instruktur " + getNama() + " membuat kursus: " 
-            + namaKursus + " (Rp" + harga + ")");
-    }
+    //  public void buatKursus(String namaKursus, double harga) {
+    //     System.out.println("Instruktur " + getNama() + " membuat kursus: " 
+    //         + namaKursus + " (Rp" + harga + ")");
+    // }
 
     public void unggahKonten(String namaKonten) {
         System.out.println("Instruktur " + getNama() + " mengunggah konten: " + namaKonten);
